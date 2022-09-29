@@ -1,0 +1,91 @@
+#grandChild:nth-child(n)::after, #grandChild, #child:nth-child(n)::after, #child, #parent:nth-child(n)::after, #parent, #ancestor:nth-child(n)::after, #ancestor, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  counter-reset: num;
+  perspective: 100px;
+  margin: 0;
+  background: #1d1e22;
+  height: 90vh;
+  overflow: hidden;
+}
+body #flow {
+  position: absolute;
+  transition: all 0.3s;
+  transform-style: preserve-3d;
+}
+
+#ancestor {
+  transform-style: preserve-3d;
+  position: relative;
+  background: #282828;
+  border-radius: 50%;
+  height: 420px;
+  width: 420px;
+}
+#ancestor:nth-child(n)::after {
+  counter-increment: num;
+  content: counter(num);
+  color: #999;
+  font-weight: bold;
+  font-size: 15px;
+  position: absolute;
+  right: 384px;
+}
+
+#parent {
+  transform-style: preserve-3d;
+  position: relative;
+  background: #2e2e2e;
+  border-radius: 50%;
+  height: 330px;
+  width: 330px;
+}
+#parent:nth-child(n)::after {
+  counter-increment: num;
+  content: counter(num);
+  color: #999;
+  font-weight: bold;
+  font-size: 15px;
+  position: absolute;
+  right: 298.5px;
+}
+
+#child {
+  transform-style: preserve-3d;
+  position: relative;
+  background: #323232;
+  border-radius: 50%;
+  height: 240px;
+  width: 240px;
+}
+#child:nth-child(n)::after {
+  counter-increment: num;
+  content: counter(num);
+  color: #999;
+  font-weight: bold;
+  font-size: 15px;
+  position: absolute;
+  right: 213px;
+}
+
+#grandChild {
+  transform-style: preserve-3d;
+  position: relative;
+  background: #3a3a3a;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+#grandChild:nth-child(n)::after {
+  counter-increment: num;
+  content: counter(num);
+  color: #999;
+  font-weight: bold;
+  font-size: 15px;
+  position: absolute;
+  right: 99px;
+}

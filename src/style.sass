@@ -1,0 +1,39 @@
+@use 'sass:map'
+$elements: ("ancestor" #282828 110px, "parent" #2e2e2e 65px, "child"  #323232 20px, "grandChild" #3a3a3a -40px)
+$base-size: 200px
+%flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+@mixin circle($r)
+  border-radius: 50%
+  height: $r
+  width: $r
+body
+  counter-reset: num
+  perspective: 100px
+  margin: 0
+  background: #1d1e22
+  height: 90vh
+  overflow: hidden
+  @extend %flex-center
+  #flow
+    position: absolute
+    transition: all .3s
+    transform-style: preserve-3d
+@each $elem, $bg_color,$size in $elements
+  ##{$elem}
+    transform-style: preserve-3d
+    position: relative
+    background: $bg_color
+    @include circle($base-size + ($size * 2))
+    @extend %flex-center
+    &:nth-child(n)::after
+      counter-increment: num
+      content: counter(num)
+      color: #999
+      font-weight: bold
+      font-size: 15px
+      position: absolute
+      right: $base-size + ($size * 1.9) - 25
+      @extend %flex-center
